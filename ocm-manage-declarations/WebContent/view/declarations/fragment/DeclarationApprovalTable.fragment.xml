@@ -69,6 +69,7 @@
                                                                 {path: 'DeclarationsModel>isTenderGroup'}
                                                                 ],
                                                         formatter:'.formatDeclared' }"/>
+                                                        
                                                         <Text text="{DeclarationsModel>varianceN}" />
                                         <!-- <Text text="{
                                                 path: 'DeclarationsModel>Variance',

@@ -150,10 +150,10 @@ sap.ui.define(["sap/ui/core/format/DateFormat"], function (DateFormat) {
 			// return sCandidate;
 			return `${siteDesc} (${site})`;
 		},
+		
 		formattedVariance: function (Conv_Declared, Sales) {
         //debugger;
 			return (parseFloat(Conv_Declared) - parseFloat(Sales)).toFixed(3);
-
 
 		}
 

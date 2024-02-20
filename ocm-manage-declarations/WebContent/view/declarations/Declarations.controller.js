@@ -599,6 +599,7 @@ sap.ui.define(
 					}
 
 					//aTenders.slice(0,1);
+					
 					this.setGlobalModelProp("/DeclarationsList", aTenders, "DeclarationsModel");
 					//console.table("Full parsed list:", aTenders);
 				}
