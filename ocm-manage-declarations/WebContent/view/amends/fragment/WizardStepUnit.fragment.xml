@@ -1,0 +1,24 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout">
+    <WizardStep id="idStepUnit" 
+                title="{i18n>wzdStepUnit}" 
+                icon="sap-icon://retail-store" 
+                validated="{= ${AmendModel>/StepUnitValid} }"
+                activate="focusField('idInputUnit')">
+        <content>
+            <l:VerticalLayout width="100%">
+                <Label text="{i18n>LBL_RETAIL_UNIT_MSG}" labelFor="idInputUnit" width="100%"/>
+                <Input id="idInputUnit" 
+                    class="text-color-stepinput"
+                    width="{AmendModel>/Width}"
+                    type="Text"
+                    editable="false"
+                    value="{AmendModel>/Unit}"
+                    valueStateText="{i18n>ERR_INVALID_UNIT}" >
+                </Input>
+            </l:VerticalLayout>
+        </content>
+    </WizardStep>
+</core:FragmentDefinition>

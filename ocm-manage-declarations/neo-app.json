@@ -1,0 +1,21 @@
+{
+  "welcomeFile": "index.html",
+  "sendWelcomeFileRedirect": true,
+  "headerWhiteList": [],
+  "routes": [
+    {
+      "path": "/xp",
+      "target": {
+        "type": "destination",
+        "name": "ssp_portal_api"
+      }
+    }
+  ],
+  "securityConstraints": [
+    {
+      "permission": "accessXPRCustomerUserPermission",
+      "description": "User access for SSP",
+      "protectedPaths": ["/"]
+    }
+  ]
+}

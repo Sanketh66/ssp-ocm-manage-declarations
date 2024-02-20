@@ -1,0 +1,9 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">        
+	<OverflowToolbar>
+		<Button id="idMessageButton" icon="sap-icon://message-popup" text="{MessageModel>/Length}" type="Emphasized"
+				press="handleMessagePopoverPress"/>
+		<ToolbarSpacer/>
+	</OverflowToolbar>
+</core:FragmentDefinition>

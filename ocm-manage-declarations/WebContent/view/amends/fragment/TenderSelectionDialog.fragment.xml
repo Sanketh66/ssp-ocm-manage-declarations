@@ -1,0 +1,16 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <SelectDialog
+                multiSelect="true"
+                title="{i18n>TITLE_TENDER_SELECTION}"
+                class="sapUiPopupWithPadding"
+                items="{AmendModel>/AvailableTendersList}"
+                liveChange="onTenderSelectionSearch"
+                search="onTenderSelectionSearch"
+                confirm="onTenderSelectionClosed"
+                cancel="onTenderSelectionClosed">
+        <StandardListItem
+                        title="{path: 'AmendModel>TenderType', formatter: '.formatTenderDescription'}" />
+    </SelectDialog>
+</core:FragmentDefinition>

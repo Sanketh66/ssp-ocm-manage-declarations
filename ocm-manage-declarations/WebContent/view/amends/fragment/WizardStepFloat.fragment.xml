@@ -1,0 +1,32 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout">
+    <WizardStep id="idStepFloat" 
+                title="{i18n>wzdStepFloat}" 
+                icon="sap-icon://sales-order-item" 
+                validated="{= ${AmendModel>/Float} !== null }"
+                visible="{AmendModel>/FloatNeeded}" >
+        <content>
+            <l:VerticalLayout width="100%">
+                <Label text="{i18n>LBL_FLOAT}" labelFor="idInputFloat"/>
+                <Input id="idInputFloat"
+                    textAlign="End"
+                    class="font-size-input"
+                    width="{AmendModel>/FloatWidth}" 
+                    description="{AmendModel>/FloatCurrency}" 
+                    value="{ parts:['AmendModel>/Float', 'AmendModel>/FloatCurrency'], type:'sap.ui.model.type.Currency', formatOptions:{ showMeasure: false } }"
+                    valueStateText="{i18n>ERR_FLOAT_MANDATORY}" 
+                    liveChange="onFloatValueLiveChange"
+                    change="onFloatValueChange"
+                    enabled="{AmendModel>/FloatNeeded}"
+                    visible="{AmendModel>/FloatNeeded}"
+                    />
+                    <Button text="{i18n>BTN_NEXT}"
+                        type="Emphasized"
+                        visible="{= ${AmendModel>/FloatValid} }"
+                        press="onStepFloatNextPressed" />
+            </l:VerticalLayout>
+        </content>
+    </WizardStep>
+</core:FragmentDefinition>

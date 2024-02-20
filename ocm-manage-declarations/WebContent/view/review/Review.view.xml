@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified"
+    xmlns:l="sap.ui.layout"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    controllerName="com.ssp.ocm.manage.declarations.view.review.Review" 
+    displayBlock="true" 
+    busy="{appView&gt;/busy}" 
+    busyIndicatorDelay="{appView&gt;/delay}">
+    <Page 
+    class="sapUiSizeCozy top-spacing" 
+    enableScrolling="true" 
+    floatingFooter="false" 
+    showNavButton="false" 
+    showFooter="true" >
+        <customHeader>
+			<OverflowToolbar class="toolbar-height">
+                <HBox width="100%" class="no-margin">
+                    <Title class="title-amends-review sapUiMediumMarginBegin sapUiSmallMarginBottom sapUiMediumMarginTop" text="{i18n>REVIEW_DECLARATION}" />
+                    <VBox alignItems="Center" width="auto">
+                        <Text class="title-amends-review sapUiLargeMarginBegin sapUiSmallMarginBottom sapUiMediumMarginTop" text="{CashierModel>/SelectedCashier/CashierDesc}" />
+                    </VBox>
+                </HBox>
+			</OverflowToolbar>
+		</customHeader>
+        <content>
+            <Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <Title text="{i18n>SITE_LBL}"/>
+                    </OverflowToolbar>
+                </headerToolbar>
+                <content>
+                    <Text text="{path: 'ReviewModel>/Site', formatter: '.getSiteDescription'}" />
+                </content>
+            </Panel>
+            <!-- Date -->
+            <Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <Title text="{i18n>wzdStepDate}"/>
+                    </OverflowToolbar>
+                </headerToolbar>
+                <content>
+                    <Text text="{path:'ReviewModel>/Date', 
+                                type: 'sap.ui.model.type.Date', 
+                                formatOptions: {
+                                    pattern: 'dd/MM/yyyy'
+				                }}" />
+                </content>
+            </Panel>
+            <!-- Float -->
+            <Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region" visible="{AmendModel>/FloatNeeded}" >
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <Title text="{i18n>wzdStepFloat}"/>
+                        <Link text="edit" press="onEditPressed($event, 'idStepFloat')"/>
+                    </OverflowToolbar>
+                </headerToolbar>
+                <content>
+                    <l:VerticalLayout class="review-tenders-vertical-layout" >
+                        <l:Grid containerQuery="true">
+                            <Text class="review-tender-description" text="{i18n>LBL_CASH}">
+                                <layoutData>
+                                    <l:GridData span="XL8 L8 M8 S8"/>
+                                </layoutData>
+                            </Text>
+                            <Text class="review-tender-amount"
+                                textAlign="End"
+                                text="{parts:['AmendModel>/Float', 'AmendModel>/FloatCurrency'], type:'sap.ui.model.type.Currency'}">
+                                <layoutData>
+                                    <l:GridData span="XL4 L4 M4 S4"/>
+                                </layoutData>
+                            </Text>
+                        </l:Grid>
+                        <!-- <Text text="{
+                            parts: ['/floatAmount', '/floatCurrency'],
+                            type: 'sap.ui.model.type.Currency'
+                        }" /> -->
+                    </l:VerticalLayout>
+                </content>
+            </Panel>
+            <!-- Tenders -->
+            <Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <Title text="{i18n>wzdStepTenders}"/>
+                        <Link text="edit" press="onEditPressed($event, 'idStepTenders')"/>
+                    </OverflowToolbar>
+                </headerToolbar>
+                <content>
+                    <l:VerticalLayout>
+                        <!-- Non bagged Tenders -->
+                        <l:VerticalLayout class="review-tenders-vertical-layout sapUiMediumMarginBottom" content="{
+                            path: 'AmendModel>/NonBaggedList',
+                            templateShareable: false
+                        }">
+                        
+                            <l:content>
+                                <l:Grid containerQuery="true">
+                                    <Text class="review-tender-description" text="{path: 'AmendModel>TenderType', formatter: '.formatTenderDescription'}">
+                                        <layoutData>
+                                            <l:GridData span="XL8 L8 M8 S8"/>
+                                        </layoutData>
+                                    </Text>
+                                    <Text class="review-tender-amount" 
+                                    textAlign="End"
+                                    text="{parts:['AmendModel>Amount', 'AmendModel>Currency'], type:'sap.ui.model.type.Currency'}">
+                                        <layoutData>
+                                            <l:GridData span="XL4 L4 M4 S4"/>
+                                        </layoutData>
+                                    </Text>
+                                </l:Grid>
+                            </l:content>
+                        </l:VerticalLayout>
+                        <!-- Bagged Tenders -->
+                        <l:VerticalLayout class="review-tenders-vertical-layout" content="{
+                            path: 'AmendModel>/BaggedList',
+                            templateShareable: false
+                        }">
+                            <l:content>
+                                <l:VerticalLayout width="100%" class="review-tenders-bag">
+                                    <Text class="review-tenders-bag-number" text="{i18n>BAG_BARCODE} - {AmendModel>BagId}" />
+                                    <l:VerticalLayout class="review-tenders-vertical-layout" width="100%" content="{AmendModel>TenderList}">
+                                        <l:content>
+                                            <l:Grid containerQuery="true">
+                                                <Text class="review-tender-description" text="{path: 'AmendModel>TenderType', formatter: '.formatTenderDescription'}">
+                                                    <layoutData>
+                                                        <l:GridData span="XL8 L8 M8 S8"/>
+                                                    </layoutData>
+                                                </Text>
+                                                <Text class="review-tender-amount" 
+                                                textAlign="End"
+                                                text="{parts:['AmendModel>Amount', 'AmendModel>Currency'], type:'sap.ui.model.type.Currency'}">
+                                                    <layoutData>
+                                                        <l:GridData span="XL4 L4 M4 S4"/>
+                                                    </layoutData>
+                                                </Text>
+                                            </l:Grid>
+                                        </l:content>
+                                    </l:VerticalLayout>
+                                </l:VerticalLayout>
+                            </l:content>
+                        </l:VerticalLayout>
+                    </l:VerticalLayout>
+                </content>
+            </Panel>
+        </content>
+        <footer>
+            <Bar>
+                <contentLeft>
+                    <Button id="idMessageButton" icon="sap-icon://message-popup" text="{MessageModel>/Length}" type="Emphasized"
+				        press="handleMessagePopoverPress" visible="{= ${MessageModel>/Length} > 0 ? true : false }"/>
+                </contentLeft>
+                <contentRight>
+                    <Button id="idCancelReviewBtn" text="{i18n>BTN_CANCEL}" press="onCancelPressed"></Button>
+                    <Button id="idConfirmBtn" text="{i18n>BTN_POST}" press="onConfirmPressed" type="Emphasized"></Button>
+                    <!--  -->
+                    <Button text="debug" type="Emphasized" visible="false" press="onPressDebug" enabled="true"/>		
+                </contentRight>
+            </Bar>
+        </footer>
+    </Page>
+</mvc:View>

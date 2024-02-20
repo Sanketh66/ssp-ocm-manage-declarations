@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified"
+	controllerName="com.ssp.ocm.manage.declarations.view.declarations.Declarations" displayBlock="true" busy="{appView&gt;/busy}"
+	busyIndicatorDelay="{appView&gt;/delay}">
+	<Page class="efdPage globalPage" enableScrolling="true" floatingFooter="true" showNavButton="false" showHeader="false"
+		showFooter="true" >
+		<core:Fragment fragmentName="com.ssp.ocm.manage.declarations.view.declarations.fragment.DeclarationApprovalTable" type="XML" />
+		<footer>
+			<core:Fragment fragmentName="com.ssp.ocm.manage.declarations.view.declarations.fragment.Footer" type="XML" />
+		</footer>
+	</Page>
+</mvc:View>

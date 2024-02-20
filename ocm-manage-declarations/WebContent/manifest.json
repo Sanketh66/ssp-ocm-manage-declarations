@@ -1,0 +1,253 @@
+{
+	"_version": "1.3.0",
+	"sap.app": {
+		"_version": "1.3.0",
+		"id": "com.ssp.ocm.manage.declarations",
+		"type": "application",
+		"i18n": "resources/i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"dataSources": {
+			"userSrv": {
+				"uri": "/sap/opu/odata/sap/ZOC_USERSMD_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0"
+				},
+				"preload": true
+			},
+			"commonSrv": {
+				"uri": "/sap/opu/odata/sap/ZCA_CORE_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0"
+				}
+			},
+			"generalSrv": {
+				"uri": "/sap/opu/odata/sap/ZOC_GENERAL_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0"
+				}
+			},
+			"manageSrv": {
+				"uri": "/sap/opu/odata/sap/ZOC_MANAGE_POS_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0"
+				}
+			},
+			"declarationSrv": {
+				"uri": "/sap/opu/odata/sap/ZOC_DEC_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0"
+				}
+			}
+		},
+		"sourceTemplate": {
+			"id": "sap.ui.ui5-template-plugin.2masterdetail",
+			"version": "1.44.6"
+		}
+	},
+	"sap.ui": {
+		"fullWidth": true,
+		"_version": "1.3.0",
+		"technology": "UI5",
+		"icons": {
+			"icon": "sap-icon://detail-view",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": ["sap_belize"]
+	},
+	"sap.ui5": {
+		"_version": "1.2.0",
+		"rootView": {
+			"viewName": "com.ssp.ocm.manage.declarations.app.App",
+			"type": "XML",
+			"id": "idAppView"
+		},
+		"dependencies": {
+			"minUI5Version": "1.44.0",
+			"libs": {
+				"sap.ui.core": {
+					"minVersion": "1.44.0"
+				},
+				"sap.m": {
+					"minVersion": "1.44.0"
+				},
+				"sap.ui.layout": {
+					"minVersion": "1.44.0"
+				}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"resources": {
+			"js": [{
+				"uri": "resources/js/lib/promise-polyfill/promise.min.js"
+			}],
+			"css": [{
+				"uri": "../resources/css/styles.css"
+			}]
+		},
+		"models": {
+			"": {
+				"type": "sap.ui.model.json.JSONModel"
+			},
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "com.ssp.ocm.manage.declarations.resources.i18n.i18n",
+					"supportedLocales": ["en"],
+          "fallbackLocale": "en"
+				}
+			},
+			"UserModel": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"dataSource": "userSrv",
+				"settings": {
+					"useBatch": true,
+					"defaultCountMode": "none",
+					"defaultOperationMode": "Client"
+				}
+			},
+			"CommonModel": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"dataSource": "commonSrv",
+				"settings": {
+					"useBatch": true,
+					"defaultUpdateMethod": "PUT"
+				}
+			},
+			"GeneralModel": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"dataSource": "generalSrv",
+				"settings": {
+					"useBatch": false
+				}
+			},
+			"DeclarationModel": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"dataSource": "declarationSrv",
+				"settings": {
+					"useBatch": true
+				}
+			},
+			"ManageModel": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"dataSource": "manageSrv",
+				"settings": {
+					"useBatch": true,
+					"defaultUpdateMethod": "PUT"
+				}
+			},
+			"ViewModel": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {}
+			}
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "com.ssp.ocm.manage.declarations.view",
+				"controlId": "idAppControl",
+				"controlAggregation": "pages",
+				"bypassed": {
+					"target": ["targetNotFound"]
+				},
+				"async": true
+			},
+			"routes": [{
+					"pattern": "locked",
+					"name": "locked",
+					"target": "targetLocked"
+				},
+				{
+					"pattern": "",
+					"name": "main",
+					"target": "targetMain"
+				},
+				{
+					"pattern": "cashier/{Variance}",
+					"name": "cashier",
+					"target": "targetCashier"
+				},
+				{
+					"pattern": "declarations/{decid}",
+					"name": "declarations",
+					"target": "targetDeclarations"
+				},
+				{
+					"pattern": "amends",
+					"name": "amends",
+					"target": "targetAmends"
+				},
+				{
+					"pattern": "review",
+					"name": "review",
+					"target": "targetReview"
+				}
+			],
+			"targets": {
+				"targetNotFound": {
+					"viewName": "notfound.NotFound",
+					"viewLevel": 1,
+					"viewId": "idNotFoundView",
+					"controlAggregation": "pages"
+				},
+				"targetMain": {
+					"viewName": "main.Main",
+					"viewLevel": 1,
+					"viewId": "idMainView",
+					"controlAggregation": "pages"
+				},
+				"targetCashier": {
+					"viewName": "cashier.Cashier",
+					"viewLevel": 2,
+					"viewId": "idCashierView",
+					"controlAggregation": "pages"
+				},
+				"targetDeclarations": {
+					"viewName": "declarations.Declarations",
+					"viewLevel": 3,
+					"viewId": "idDeclarationsView",
+					"controlAggregation": "pages"
+				},
+				"targetAmends": {
+					"viewName": "amends.Amends",
+					"viewLevel": 4,
+					"viewId": "idAmendsView",
+					"controlAggregation": "pages"
+				},
+				"targetReview": {
+					"viewName": "review.Review",
+					"viewLevel": 4,
+					"viewId": "idReviewView",
+					"controlAggregation": "pages"
+				},
+				"targetLocked": {
+					"viewName": "locked.Locked",
+					"viewLevel": 1,
+					"viewId": "idLockedView",
+					"controlAggregation": "pages"
+				}
+			}
+		}
+	}
+}

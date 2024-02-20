@@ -1,0 +1,10 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <OverflowToolbar 
+        design="Info" 
+        class="siteToolbarBgColor siteToolbarMainVisible site-toolbar-height" >
+        <Label text="{path: 'AmendModel>/Unit', formatter: '.getSiteToolbar'}" visible="{= !!${AmendModel>/Unit} }"/>
+        <ToolbarSpacer />
+    </OverflowToolbar>
+</core:FragmentDefinition>

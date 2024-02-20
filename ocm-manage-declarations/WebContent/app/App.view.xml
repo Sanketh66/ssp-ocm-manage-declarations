@@ -1,0 +1,8 @@
+<mvc:View controllerName="com.ssp.ocm.manage.declarations.app.App"
+    displayBlock="true"
+    busy="{appView>/busy}"
+    busyIndicatorDelay="{appView>/delay}"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc">
+	<App id="idAppControl" />
+</mvc:View>

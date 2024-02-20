@@ -1,0 +1,15 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">   
+        <ViewSettingsDialog
+		confirm="handleConfirmSorting">
+		<sortItems>
+			<ViewSettingsItem text="{i18n>SITE_LBL}" key="SiteDesc"  />
+			<ViewSettingsItem text="{i18n>DATE_LBL}" key="Date" selected="true"/>
+			<ViewSettingsItem text="{i18n>TENDER_CROSSOVER_LBL}" key="TenderFlag" />
+                        <ViewSettingsItem text="{i18n>CASHIER_CROSSOVER_LBL}" key="CashierFlag" />
+                        <ViewSettingsItem text="{i18n>VARIANCE_LBL}" key="VarianceFlag" />
+                        <ViewSettingsItem text="{i18n>STATUS_LBL}" key="Status" />
+		</sortItems>
+        </ViewSettingsDialog>
+</core:FragmentDefinition>

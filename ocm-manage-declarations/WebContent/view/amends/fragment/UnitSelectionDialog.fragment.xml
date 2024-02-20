@@ -1,0 +1,16 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <SelectDialog
+                title="{i18n>TITLE_UNIT_SELECTION}"
+                class="sapUiPopupWithPadding"
+                items="{/units}"
+                search="onUnitSelectionSearch"
+                liveChange="onUnitSelectionSearch"
+                confirm="onUnitSelectionClose"
+                cancel="onUnitSelectionClose">
+        <StandardListItem
+                        title="{UserSite}"
+                        description="{SiteDescription}" />
+    </SelectDialog>
+</core:FragmentDefinition>

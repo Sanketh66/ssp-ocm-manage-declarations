@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified"
+	controllerName="com.ssp.ocm.manage.declarations.view.main.Main" displayBlock="true" busy="{appView&gt;/busy}"
+	busyIndicatorDelay="{appView&gt;/delay}">
+	<Page class="efdPage globalPage" enableScrolling="true" floatingFooter="true" showNavButton="false" showHeader="false"
+		showFooter="{= ${MessageModel>/Length} > 0 ? true : false }" >
+		
+		<core:Fragment fragmentName="com.ssp.ocm.manage.declarations.view.main.fragment.DeclarationsTable" type="XML" />
+		<footer>
+			<core:Fragment fragmentName="com.ssp.ocm.manage.declarations.view.main.fragment.Footer" type="XML" />
+		</footer>
+	</Page>
+</mvc:View>

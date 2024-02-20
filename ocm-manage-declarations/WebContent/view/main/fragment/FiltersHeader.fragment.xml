@@ -1,0 +1,79 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+        <Panel width="auto" id="idFiltersPanel" class="sapUiResponsiveMargin hideDefaultArrow hideBordersPanel panelBgColor full-width" expanded="true" expand="onExpandCollapse" expandable="true" >
+		<headerToolbar>
+			<OverflowToolbar height="3rem" active="true" press="onClickPanel">
+                                <HBox class="toolbarAligning">
+                                        <Title text="{i18n>FILTER_TITLE}" class="sapUiLargeMarginEnd titleColor" />
+                                        <core:Icon id="idArrowIconDown" class="sapUiMediumMarginEnd iconSizeColor" src="sap-icon://slim-arrow-down" color="#000000" visible="false" />
+                                        <core:Icon id="idArrowIconUp" class="sapUiMediumMarginEnd iconSizeColor" src="sap-icon://slim-arrow-up" color="#000000" visible="true" />
+                                        <Label id="idFilteredLabel" class="filteredLabelColor" text="{parts: [
+                                                                                                        {path: 'FiltersModel>/FilteredSite'},
+                                                                                                        {path: 'FiltersModel>/FilteredStatus'},
+                                                                                                        {path: 'FiltersModel>/FilteredVariance'},
+                                                                                                        {path: 'FiltersModel>/FilteredDateStart'},
+                                                                                                        {path: 'FiltersModel>/FilteredDateEnd'}
+                                                                                                        ],
+                                                                                                        formatter: '.formatFilteredBy'}" visible="false"/>
+                                </HBox>
+			</OverflowToolbar>
+		</headerToolbar>
+		<content>
+                        <HBox justifyContent="SpaceBetween">
+                                <VBox class="vbox-width">
+                                        <Label text="{i18n>SITE_LBL}:" labelFor="idComboSite"/>
+                                        <ComboBox
+                                                class="dropdown-size"
+                                                id="idComboSite"
+                                                items="{FiltersModel>/SiteFilterList}"
+                                                selectedKey="{FiltersModel>/FilteredSite}"
+                                                change="onChangeSiteFilter">
+                                                <core:ListItem key="{FiltersModel>Site}" text="{ parts: ['FiltersModel>SiteDesc', 'FiltersModel>Site'], formatter: '.formatter.formatSiteNameDropdown' }"/>
+                                        </ComboBox>
+                                </VBox>
+                                <VBox class="vbox-width">
+                                        <Label text="{i18n>STATUS_LBL}:" labelFor="idComboStatus"/>
+                                        <Select
+                                                class="dropdown-size"
+                                                id="idComboStatus"
+                                                items="{FiltersModel>/StatusFilterList}"
+                                                selectedKey="{FiltersModel>/FilteredStatus}"
+                                                change="onChangeStatusFilter">
+                                                <core:ListItem key="{FiltersModel>ID}" text="{FiltersModel>Description}"/>
+                                        </Select>
+                                </VBox>
+                                <VBox class="vbox-width">
+                                        <Label text="{i18n>VARIANCE_LBL}:" labelFor="idComboVariances"/>
+                                        <Select
+                                                class="dropdown-size"
+                                                id="idComboVariances"
+                                                selectedKey="{FiltersModel>/FilteredVariance}"
+                                                change="onChangeVarianceFilter">
+                                                <core:ListItem key="All" text="{i18n>SHOW_ALL_FILTER}"/>
+                                                <core:ListItem key="Variances" text="{i18n>VARIANCES_ONLY_FILTER}"/>
+                                        </Select>
+                                </VBox>
+                                <VBox class="vbox-width">
+                                        <Label text="{i18n>DATE_LBL}:" labelFor="idDatePickerFilter"/>
+                                        <DateRangeSelection
+                                                id="idDatePickerFilter"
+                                                displayFormat="MMM d, y"
+                                                dateValue="{
+                                                        path: 'FiltersModel>/FilteredDateStart',
+                                                        formatOptions: {
+                                                                UTC: true
+                                                        }
+                                                }"
+			                        secondDateValue="{
+                                                        path: 'FiltersModel>/FilteredDateEnd',
+                                                        formatOptions: {
+                                                                UTC: true
+                                                        }
+                                                }"
+                                                maxDate="{FiltersModel>/maxDate}"
+                                                change="onChangeDateFilter"
+                                                class="date-size date-margin-top"/>
+                                </VBox>
+                        </HBox>
+		</content>
+	</Panel>
+</core:FragmentDefinition>

@@ -1,0 +1,24 @@
+<Dialog
+    xmlns="sap.m" title="{ci18n>TITLE_BARCODE_ENTER}" class="sapUiContentPadding">
+    <content>
+        <Input
+			id="inp_barcode"
+			value="{ path: '/barcode',
+                    type: 'sap.ui.model.type.String'
+				}"
+			valueLiveUpdate="true"
+            validationError="onValidationError"
+			validationSuccess="onValidationSuccess"
+			placeholder="{i18n>BARCODE_DIALOG_PLACEHOLDER}"
+			liveChange="onLiveChange" 
+            valueStateText="{ci18n>ERR_INVALID_BARCODE}"/>
+        <Text text="{i18n>BARCODE_DIALOG_MSG}" visible="{/isNoScanner}" />
+    </content>
+    <beginButton>
+        <Button id="btn_barcode_ok" text="{ci18n>BARCODE_DIALOG_ADD_BAG}" press="onOK" 
+            enabled="{ path: '/okEnabled' }" />
+    </beginButton>
+    <endButton>
+        <Button text="{i18n>BARCODE_DIALOG_CANCEL}" press="onCancel" />
+    </endButton>
+</Dialog>

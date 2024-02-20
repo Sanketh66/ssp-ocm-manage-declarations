@@ -1,0 +1,12 @@
+<mvc:View
+	height="100%"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    controllerName="com.ssp.ocm.manage.declarations.view.locked.Locked">
+    <MessagePage id="idLockedMessagePage"
+                showHeader="false"
+                text="{i18n>TXT_DECL_LOCKED}"
+                enableFormattedText="false"
+                description="{i18n>TXT_DECL_LOCKED_DESC}"
+                icon="sap-icon://locked"></MessagePage>
+</mvc:View>

@@ -1,0 +1,15 @@
+_schema-version: "2.0"
+ID: com.ssp.ocm.manage.declarations.app
+version: 1.0.0
+
+modules:
+  - name: skeleton
+    type: com.sap.hcp.html5
+    parameters:
+      name: skeleton
+      version: '@html5.version'
+      active: true
+      display-name: skeleton
+      description: skeleton
+    path: dist_ocm-manage-declarations
+resources:

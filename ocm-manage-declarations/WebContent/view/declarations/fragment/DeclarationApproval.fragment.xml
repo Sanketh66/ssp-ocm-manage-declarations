@@ -1,0 +1,22 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+        <Dialog
+                class="dialog-size"
+                title="Confirm approval">
+                <content>
+                        <VBox class="padding-dialog">
+                                <HBox width="100%" class="items-width sapUiSmallMarginBottom" justifyContent="SpaceBetween">
+                                        <core:Icon src="sap-icon://alert" color="#555555"/>
+                                        <Text maxLines="2" text="This declaration contains variances outside of tolerance." />
+                                </HBox>
+                                <Label labelFor="idTextArea" text="Enter supporting comment" class="label-size-text-area" />
+                                <TextArea id="idTextArea" width="100%" value="{DeclarationsModel>/ApproveComment}" rows="4" />
+                        </VBox>
+                </content>
+                <buttons>
+                        <Button text="Confirm" type="Emphasized" class="btn-approval-size" press="onConfirmApproval" />
+                        <Button text="Cancel" type="Transparent" class="btn-approval-size" press="onCancelApproval"/>
+                </buttons>
+        </Dialog>
+</core:FragmentDefinition>

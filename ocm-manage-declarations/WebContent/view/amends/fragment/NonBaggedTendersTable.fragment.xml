@@ -1,0 +1,54 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <!-- FIXME -->
+    <Table id="idNonBaggedTendersTable"
+        mode="Delete"
+        delete="onNonBaggedTendersDeletePressed"
+        width="25em"
+        visible="{= ${AmendModel>/TenderVisible} === 'non-bagged' }"
+        inset="false"
+        alternateRowColors="false"
+        items="{
+            path: 'AmendModel>/NonBaggedList',
+            templateShareable: false
+        }"
+        class="table-header-color"
+        keyboardMode="Edit">
+        <headerToolbar>
+            <OverflowToolbar class="no-border-top">
+                <content>
+                    <ToolbarSpacer />
+                    <Button icon="sap-icon://add" text="{i18n>BTN_ADD_NON_BAGGED_TENDER}" press="onNonBaggedTendersAddPressed" />
+                </content>
+            </OverflowToolbar>
+        </headerToolbar>
+        <columns>
+            <Column>
+                <Text text="{i18n>TYPE_TXT}" />
+            </Column>
+            <Column
+                width="14em">
+                <Text text="{i18n>HEAD_AMOUNT}" />
+            </Column>
+            <!-- <Column
+                width="2em"
+                hAlign="Middle"><Text text="" /></Column> -->
+        </columns>
+        <items>
+            <ColumnListItem vAlign="Middle" class="row-color">
+                <cells>
+                    <Text text="{path: 'AmendModel>TenderType', formatter: '.formatTenderDescription'}" />
+                    <Input description="{AmendModel>Currency}"
+                        textAlign="End"
+                        value="{
+                            parts:['AmendModel>Amount', 'AmendModel>Currency'], 
+                            type:'com.ssp.ocm.manage.declarations.type.CurrencyAndEmpty', 
+                            formatOptions:{ showMeasure: false }
+                        }"
+                        change="onItemAmountChange" />
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+</core:FragmentDefinition>

@@ -1,0 +1,89 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:data="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+        <Table id="idDeclarationsTable" 
+                items="{DeclarationsModel>/DeclarationsList}" 
+                class="header-colors group-colors table-padding">
+                <headerToolbar>
+			<OverflowToolbar class="headerToolbarBorder sapUiMediumMarginBottom">
+				<content>
+					<Title class="titleSizeDeclarations" text="{i18n>DECLARATION_APPROVAL_TITLE}"/>
+					<ToolbarSpacer />
+				</content>
+			</OverflowToolbar>
+		</headerToolbar>
+                <infoToolbar>
+			<OverflowToolbar class="infoToolbarBgColorDeclarations sapUiMediumMarginBottom" height="auto">
+                                <VBox width="100%" >
+                                        <HBox width="100%" class="sapUiSmallMarginBottom">
+                                                <Text text="{CashierModel>/SelectedCashier/CashierDesc}" class="sapUiMediumMarginEnd textColor textSize" />
+                                                <Text text="{   parts: [{path: 'CashierModel>/SelectedCashier/Date'}],
+                                                                formatter: '.formatDates'       }" class="sapUiLargeMarginBegin sapUiMediumMarginEnd textColor textSize" />
+                                                <Text text="{CashierModel>/SelectedCashier/SiteDesc} ({CashierModel>/SelectedCashier/Site})" class="sapUiMediumMarginBegin textColor textSize" />
+                                        </HBox>
+                                        
+                                        <HBox width="100%" justifyContent="SpaceBetween" class="vertical-align-hbox">
+                                                <Label text="{CashierModel>/SelectedCashier/Status}" class="statusColorOrange"/>
+                                                <HBox justifyContent="SpaceBetween" class="vertical-align-hbox">
+                                                        <Button id="idBtnAmend" text="{i18n>AMEND_BTN}" class="transparentButtonBorders" type="Emphasized" press="onPressAmendDeclaration" enabled="false" />
+                                                        <Button id="idBtnDelete" text="{i18n>DELETE_BTN}" class="sapUiTinyMargin" type="Reject" press="onPressDeleteDeclaration" enabled="false" />
+                                                </HBox>        
+                                        </HBox>
+                                </VBox>
+			</OverflowToolbar>
+		</infoToolbar>
+                <columns>
+                        <Column width="25%"> 
+                                <Text text="{i18n>TENDER_TYPES_LABEL}" />
+                        </Column>
+                        <Column width="15%"> 
+                                <Text text="{i18n>SALES_LBL}" />
+                        </Column>
+                        <Column width="15%"> 
+                                <Text text="{i18n>DECLARED_LBL}" />
+                        </Column>
+                        <Column> 
+                                <Text text="{i18n>VARIANCE_LBL}" />
+                        </Column>
+                </columns>
+                <items>
+                        <ColumnListItem class="row-color row-padding" data:group="{DeclarationsModel>isTenderGroup}">
+                                <cells>
+                                        <Text text="{ parts: [  {path: 'DeclarationsModel>TenderType'},
+                                                                {path: 'DeclarationsModel>isTenderGroup'},
+                                                                 {path: 'DeclarationsModel>Declared'},
+                                                                {path: 'DeclarationsModel>LocalCurr'},
+                                                                 {path: 'DeclarationsModel>ExchangeRate'},
+                                                                 {path: 'DeclarationsModel>Local_Currency'}
+                                                                ],
+                                                        formatter: '.formatTenderDescription'}"/>
+                                        <Text text="{
+                                                path: 'DeclarationsModel>Sales',
+                                                type: 'sap.ui.model.type.Float',
+                                                formatOptions: { 
+                                                        minFractionDigits: 2,
+                                                        maxFractionDigits: 2 
+                                                }}" />
+                                        <Text text= "{ parts: [  {path: 'DeclarationsModel>Declared_Total'},
+                                                                {path: 'DeclarationsModel>Conv_Declared'},
+                                                                 {path: 'DeclarationsModel>Declared'},
+                                                                {path: 'DeclarationsModel>ExchangeRate'},
+                                                                {path: 'DeclarationsModel>isTenderGroup'}
+                                                                ],
+                                                        formatter:'.formatDeclared' }"/>
+                                                        <Text text="{DeclarationsModel>varianceN}" />
+                                        <!-- <Text text="{
+                                                path: 'DeclarationsModel>Variance',
+                                                type: 'sap.ui.model.type.Float', 
+                                                formatOptions: { minFractionDigits: 2, maxFractionDigits: 2 }}" /> -->
+                                                <!-- <Text text="{ parts: [  {path: 'DeclarationsModel>Conv_Declared'},
+                                                                {path: 'DeclarationsModel>Sales'}
+                                                                 
+                                                                ],
+                                                        formatter:'.formattedVariance' }" /> -->
+                                </cells>
+                                <customData>
+                                        <core:CustomData key="group" value="{= ${DeclarationsModel>isTenderGroup} ? 'true' : 'false'}" writeToDom="true" />
+                                </customData>
+                        </ColumnListItem>
+                </items>
+        </Table>
+</core:FragmentDefinition>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified" controllerName="com.ssp.ocm.manage.declarations.view.amends.Amends" displayBlock="true" busy="{appView&gt;/busy}" busyIndicatorDelay="{appView&gt;/delay}">
+    <Page 
+    title="{}"
+    class="sapUiSizeCozy efdPage globalPage page-header" 
+    enableScrolling="false" 
+    floatingFooter="false" 
+    showNavButton="false" 
+    showFooter="true" >
+        <customHeader>
+			<OverflowToolbar class="toolbar-height">
+                <VBox width="100%" class="no-margin">
+                    <Title class="title-amends-review sapUiMediumMarginBegin sapUiSmallMarginBottom sapUiMediumMarginTop" text="{i18n>TITLE_DECLARATION}" />
+                    <HBox width="100%" class="item-width">
+                        <core:Fragment fragmentName="com.ssp.ocm.manage.declarations.view.amends.fragment.SiteToolbar" type="XML" />
+                    </HBox>
+                </VBox>
+			</OverflowToolbar>
+		</customHeader>
+        <content>
+            <core:Fragment fragmentName="com.ssp.ocm.manage.declarations.view.amends.fragment.WizardSteps" type="XML" />
+        </content>
+        <footer>
+            <Bar>
+                <contentLeft>
+                    <Button id="idMessageButton" icon="sap-icon://message-popup" text="{MessageModel>/Length}" type="Emphasized"
+				        press="handleMessagePopoverPress" visible="{= ${MessageModel>/Length} > 0 ? true : false }"/>
+                </contentLeft>
+                <contentRight>
+                    <Button id="idCancelBtn" text="{i18n>BTN_CANCEL}" press="onCancelPressed"></Button>
+                    <Button text="Go to review" press="onGoToReview" visible="false"></Button>
+                </contentRight>
+            </Bar>
+        </footer>
+    </Page>
+</mvc:View>

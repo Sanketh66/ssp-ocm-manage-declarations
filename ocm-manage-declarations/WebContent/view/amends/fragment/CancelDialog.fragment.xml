@@ -1,0 +1,23 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <Dialog id="idCancelDialog" 
+        title="{i18n>TITLE_CANCEL}" 
+        state="Warning" 
+        type="Message">
+        <content>
+            <Text text="{i18n>MSG_CHANGES_WILL_BE_LOST}" />
+        </content>
+        <beginButton>
+            <Button 
+                text="{i18n>BTN_IGNORE_CHANGES}" 
+                type="Reject" 
+                press="onNavBack" />
+        </beginButton>
+        <endButton>
+            <Button 
+                text="{i18n>BTN_GO_BACK}"
+                press="onCancelExitPressed"></Button>
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

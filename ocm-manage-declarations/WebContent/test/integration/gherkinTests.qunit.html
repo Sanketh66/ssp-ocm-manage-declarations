@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Unit tests for SSP OCM apps</title>
+
+    <script
+      id="sap-ui-bootstrap"
+      src="https://openui5.hana.ondemand.com/1.99.1/resources/sap-ui-core.js"
+      data-sap-ui-resourceroots='{
+  			"com.ssp.ocm.manage.declarations": "../../../WebContent/",
+  			"test.integration": "./"
+  		}'
+      data-sap-ui-loglevel="INFO"
+    ></script>
+
+    <script>
+    jQuery.sap.require("test.integration.allFeatures");
+</script>
+
+  </head>
+  <body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout">
+    <WizardStep id="idStepDate" 
+        title="{i18n>wzdStepDate}" 
+        icon="sap-icon://appointment-2" 
+        validated="{AmendModel>/StepDateValid}">
+        <content>
+            <l:VerticalLayout width="100%">
+                <Label text="{i18n>LBL_DELIVERY_DATE}" labelFor="idDeclarationDate"/>
+                <DatePicker id="idDeclarationDate"
+                    class="text-color-stepinput"
+                    width="{AmendModel>/DateWidth}"
+                    editable="false"
+                    valueFormat="dd/MM/yyyy" 
+                    displayFormat="MMM d, y"
+                    dateValue="{AmendModel>/Date}"
+                    valueStateText="{i18n>ERR_INVALID_DATE}" />
+            </l:VerticalLayout>
+        </content>
+    </WizardStep>
+</core:FragmentDefinition>

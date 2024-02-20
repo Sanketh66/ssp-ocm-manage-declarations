@@ -1,0 +1,78 @@
+// main: styles.less
+
+// *----------------------------------------------
+// *----- Definitions
+// *----------------------------------------------
+
+.siteToolbarBgColor {
+        .bgColorSiteToolbar();
+      
+        span {
+          .noPaddingLeft();
+          bdi {
+            .whiteFont();
+            .normalFontStyle();
+          }
+        }
+      
+        button {
+          .noMarginRight();
+          .noPaddingRight();
+          span {
+            .noTextShadow();
+            .noPaddingRight();
+            bdi {
+              .changeSiteLightBlue();
+            }
+          }
+        }
+      }
+      
+      review-tender-amount {
+        width: 30em;
+        text-align: right;
+      }
+      .review-tender-description {
+        width: 30em;
+      }
+      
+      .sapMPanelContent:not(.sapMPanelBGTransparent) {
+        border-bottom: none;
+      }
+      
+      .sapUiRespGrid.sapUiRespGridHSpace1 {
+        padding: 0;
+      }
+      // Align amounts to the right on the Review screen
+      .review-tenders-vertical-layout {
+        .sapUiRespGridSpanL6,
+        .sapUiRespGridSpanM6,
+        .sapUiRespGridSpanS6,
+        .sapUiRespGridSpanXL6 {
+        }
+      }
+      
+      .review-tenders-bag {
+        margin-bottom: 1em;
+        .review-tenders-bag-number {
+          margin-bottom: 0.5em;
+          color: #6E6E6E !important;
+        }
+      }
+      
+      .review-tenders-vertical-layout {
+        width: 25em;
+        .sapUiRespGridSpanL8,
+        .sapUiRespGridSpanM8,
+        .sapUiRespGridSpanS8,
+        .sapUiRespGridSpanXL8 {
+          margin: 0 !important;
+        }
+        .sapUiRespGridSpanL4,
+        .sapUiRespGridSpanM4,
+        .sapUiRespGridSpanS4,
+        .sapUiRespGridSpanXL4 {
+          text-align: right;
+        }
+      }
+      

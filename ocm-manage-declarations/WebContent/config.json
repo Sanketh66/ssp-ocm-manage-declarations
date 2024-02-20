@@ -1,0 +1,109 @@
+{
+	"mode": "relative",
+	"https": "true",
+	"liveSearchInterval": "0.75",
+	"imageCompression": "0.1",
+	"upperLimitSearchList": "5",
+	"defaultLanguage": "es",
+	"localAuth": "",
+	"timeout": {
+		"short": "10000",
+		"medium": "50000",
+		"long": "300000"
+	},
+	"urls": {
+		"path": "/",
+		"relpath": "",
+		"CashierListData": {
+			"path": "ZC_OCTOTALCASH",
+			"GetCashiers": {
+				"method": "read"
+			}
+		},
+		"SitesSummaryData": {
+			"path": "ZC_OCTOTALSITE",
+			"GetSitesSummary": {
+				"method" : "read"
+			}
+		},
+		"StatusData": {
+			"path": "ZC_OCDECLARATIONT_pos",
+			"GetStatus": {
+				"method" : "read"
+			}
+		},
+		"TenderTypesData": {
+			"path": "ZC_OCUSER_TT",
+			"GetTender": {
+				"method" : "read"
+			}
+		},
+		"TenderGroupData": {
+			"path": "ZC_OCTENDERGT",
+			"GetGroup": {
+				"method" : "read"
+			}
+		},
+		"CashierData": {
+			"path": "ZC_OCTOTALTT",
+			"GetCashier": {
+				"method" : "read"
+			}
+		},
+		"FloatData": {
+			"path": "ZC_OCOPENDEC_FLOAT",
+			"GetFloat": {
+				"method" : "read"
+			}
+		},
+		"BagData": {
+			"path": "ZC_OCOPENDEC_BAG",
+			"GetBag": {
+				"method" : "read"
+			}
+		},
+		"AmendData": {
+			"path": "ZC_DEC_AMENDSet",
+			"AmendDec": {
+				"method" : "create"
+			}
+		},
+		"UserStatus": {
+			"path": "CHECKMANAGERSet",
+			"GetUserStatus": {
+				"method": "read"
+			}
+		},
+		"DefaultTenderData": {
+			"path": "ZC_OCUSER_LOCAL",
+			"GetDefault": {
+				"method": "read"
+			}
+		},
+		"userTenderData": {
+			"path": "ZC_OCUSER_TT",
+			"GetUserTenderTypes": {
+				"method": "read"
+			}
+		},
+		"allInfoData": {
+			"path": "ZC_OCTOTALTT",
+			"GetAllInfo": {
+				"method": "read"
+			}
+		},
+		"generalData": {
+			"path": "ZC_OCGENERAL($)",
+			"GetGeneralData": {
+				"method": "read"
+			}
+		},
+		"logout": {
+			"page": "/sap/public/bc/icf/logoff?sap-client=800&redirectURL=/sap/bc/ui5_ui5/ui2/ushell/shells/abap/FioriLaunchpad.html?sap-client=800",
+			"path": "/sap/public/bc/icf/logoff?sap-client=800",
+			"DoLogout": {
+				"method": "GET"
+			}
+		}
+	}
+}

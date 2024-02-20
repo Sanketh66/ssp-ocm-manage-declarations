@@ -1,0 +1,13 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">        
+	<OverflowToolbar>
+		<Button id="idMessageButton" icon="sap-icon://message-popup" text="{MessageModel>/Length}" type="Emphasized"
+				press="handleMessagePopoverPress" visible="{= ${MessageModel>/Length} > 0 ? true : false }"/>
+		<ToolbarSpacer/>
+		<Button id="idBtnApprove" text="{i18n>APPROVE_BTN}" type="Emphasized"
+				press="onApproveDeclaration" enabled="false"/>
+		<!--  -->
+		<Button text="debug" type="Emphasized" visible="false" press="onPressDebug" enabled="true"/>				
+	</OverflowToolbar>
+</core:FragmentDefinition>
