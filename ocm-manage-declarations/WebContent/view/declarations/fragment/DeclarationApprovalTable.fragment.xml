@@ -55,6 +55,7 @@
                                                                  {path: 'DeclarationsModel>Local_Currency'}
                                                                 ],
                                                         formatter: '.formatTenderDescription'}"/>
+                                                        
                                         <Text text="{
                                                 path: 'DeclarationsModel>Sales',
                                                 type: 'sap.ui.model.type.Float',

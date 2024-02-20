@@ -154,9 +154,9 @@ sap.ui.define(["sap/ui/core/format/DateFormat"], function (DateFormat) {
 		formattedVariance: function (Conv_Declared, Sales) {
         //debugger;
 			return (parseFloat(Conv_Declared) - parseFloat(Sales)).toFixed(3);
-
 		}
 
+		
 		// formatVARIANCE_VALUE_1: function(iVarianc) {
 		// 	if(iVarianc<0){
 		// 		return iVarianc*(-1);

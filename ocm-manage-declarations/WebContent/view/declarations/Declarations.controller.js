@@ -593,6 +593,7 @@ sap.ui.define(
 					for (var i = 1; i < aTenders.length; i++) {
 						aTenders[i].varianceN= (parseFloat(aTenders[i].Conv_Declared) - parseFloat(aTenders[i].Sales)).toFixed(3);
 					}
+
 					aTenders[0].varianceN = 0;
 					for (var i = 1; i < aTenders.length; i++) {
 						aTenders[0].varianceN = parseFloat(aTenders[0].varianceN) + parseFloat(aTenders[i].varianceN);
